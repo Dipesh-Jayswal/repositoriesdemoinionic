@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>List repositories for a user </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-item class="" lines="none">
+    <ion-searchbar class="ion-no-padding" style="padding-right:10px" [(ngModel)]="searchingGitUser" (keyup.enter)="search($event)"
+    placeholder="Search" (ionInput)="resetValueSet($event)"></ion-searchbar>
+    <ion-button class="" (click)="search('Enter')">Search</ion-button>
+  </ion-item>
+  
+
+<div *ngIf="gitUserListArray.length > 0">
+  <ion-card *ngFor="let items of gitUserListArray">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" [src]="items.owner.avatar_url" />
+      </ion-avatar>
+      <ion-label>
+        Name : {{items.name}}
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+</div>
+
+<div *ngIf="gitUserListArray.length === 0">
+  <div style="height: 80vh;width:100%;display: flex;justify-content: center;align-items: center;">
+    No Data Found
+  </div>
+</div>
+</ion-content>
