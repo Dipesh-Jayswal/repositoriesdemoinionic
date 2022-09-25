@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Repositories Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar show-cancel-button="focus" [(ngModel)]="searchingGitRepo" (keyup.enter)="search($event)"
+    placeholder="Search" (ionInput)="resetValueSet($event)"></ion-searchbar>
+
+  <div *ngIf="repositoreisListArray.length > 0">
+    <ion-item *ngFor="let items of repositoreisListArray">
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" [src]="items.owner.avatar_url" />
+      </ion-avatar>
+      <ion-label>
+        Name : {{items.name}}
+      </ion-label>
+    </ion-item>
+
+    <ion-infinite-scroll threshold="100px" *ngIf="pagination.canGoNext && pagination.total>perPage"
+      (ionInfinite)="infiniteScroll($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </div>
+
+  <div *ngIf="repositoreisListArray.length === 0">
+    No Data Found
+  </div>
+</ion-content>
