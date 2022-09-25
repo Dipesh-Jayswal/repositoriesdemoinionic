@@ -12,7 +12,7 @@
         
     Project Setup
     
-        step 1:clone link : git clone https://github.com/Dipesh-Jayswal/repositoriesdemoinionic.git
+        step 1:git clone https://github.com/Dipesh-Jayswal/repositoriesdemoinionic.git
         step 2:cd {{project directory}}
         step 3:npm install
         step 4:ionic serve
